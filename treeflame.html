@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://spiermar.github.io/d3-flame-graph/d3.flameGraph.css">
+    <link rel="stylesheet" type="text/css" href="http://cimi.io/d3-flame-graphs/d3-flame-graph.css">
+    <style>
+      .d3-flame-graph rect:hover {
+        fill: #A5D;
+        stroke: #FFF;
+        stroke-width: 1;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="chart">
+      </div>
+    </div>
+
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="http://spiermar.github.io/d3-flame-graph/d3.flameGraph.js"></script>
+
+    <script type="text/javascript">
+    var flameGraph = d3.flameGraph()
+      .height(640)
+      .width(window.innerWidth)
+      .cellHeight(18)
+      .transitionDuration(500)
+      .transitionEase('cubic-in-out')
+      .sort(true)
+      //Example to sort in reverse order
+      //.sort(function(a,b){ return d3.descending(a.name, b.name);})
+      .title("");
+
+    // Example on how to use custom tooltips using d3-tip.
+    var tip = d3.tip()
+      .direction("s")
+      .offset([8, 0])
+      .attr('class', 'd3-flame-graph-tip')
+      .html(function(d) {
+        var sizeKB = Math.floor(d.value / 1024)
+        var size = sizeKB > 1024 ? Math.floor(sizeKB / 1024) + 'MB' : sizeKB + 'KB'
+        return "name: " + d.name + ", size: " + size;
+      });
+
+    flameGraph.tooltip(tip);
+
+    // Example on how to use custom labels
+    // var label = function(d) {
+    //  return "name: " + d.name + ", value: " + d.value;
+    // }
+
+    // flameGraph.label(label);
+
+    d3.json("treedata-flame.json", function(error, data) {
+      if (error) return console.warn(error);
+      d3.select("#chart")
+          .datum(data)
+          .call(flameGraph);
+    });
+    </script>
+  </body>
+</html>
