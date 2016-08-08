@@ -18,6 +18,11 @@ const transformedTreeJSON = JSON.parse(JSON.stringify(treeJSON), function (k, v)
       return v
   }
 })
+
+treeJSON.name = transformedTreeJSON.name = path.resolve(dir)
+
+// console.log(treeJSON)
 // console.log(transformedTreeJSON)
+
 fs.writeFileSync('treedata-map.json', JSON.stringify(treeJSON, null, 2))
 fs.writeFileSync('treedata-flame.json', JSON.stringify(transformedTreeJSON, null, 2))
