@@ -5,11 +5,23 @@
     <link rel="stylesheet" type="text/css" href="http://spiermar.github.io/d3-flame-graph/d3.flameGraph.css">
     <link rel="stylesheet" type="text/css" href="http://cimi.io/d3-flame-graphs/d3-flame-graph.css">
     <style>
+      body { margin: 0 }
+      #chart { margin: 50px }
+      .d3-flame-graph rect {
+        stroke: #ececec;
+        fill-opacity: .8;
+      }
       .d3-flame-graph rect:hover {
         fill: #A5D;
         stroke: #FFF;
         stroke-width: 1;
         cursor: pointer;
+      }
+      .d3-flame-graph .label {
+        color: #690000;
+      }
+      .d3-flame-graph .fade {
+        opacity: 0.4 !important;
       }
     </style>
   </head>
@@ -24,15 +36,14 @@
     <script type="text/javascript" src="http://spiermar.github.io/d3-flame-graph/d3.flameGraph.js"></script>
 
     <script type="text/javascript">
+    var margin = 50
     var flameGraph = d3.flameGraph()
-      .height(640)
-      .width(window.innerWidth)
+      .height(window.innerHeight - margin * 2)
+      .width(window.innerWidth - margin * 2)
       .cellHeight(18)
       .transitionDuration(500)
       .transitionEase('cubic-in-out')
       .sort(true)
-      //Example to sort in reverse order
-      //.sort(function(a,b){ return d3.descending(a.name, b.name);})
       .title("");
 
     // Example on how to use custom tooltips using d3-tip.
@@ -42,8 +53,8 @@
       .attr('class', 'd3-flame-graph-tip')
       .html(function(d) {
         var sizeKB = Math.floor(d.value / 1024)
-        var size = sizeKB > 1024 ? Math.floor(sizeKB / 1024) + 'MB' : sizeKB + 'KB'
-        return "name: " + d.name + ", size: " + size;
+        var size = sizeKB > 1024 ? Math.floor(sizeKB / 10.24) / 100 + 'MB' : sizeKB + 'KB'
+        return d.name + ": " + size;
       });
 
     flameGraph.tooltip(tip);
