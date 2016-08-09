@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="http://spiermar.github.io/d3-flame-graph/d3.flameGraph.css">
+    <link rel="stylesheet" type="text/css" href="http://cimi.io/d3-flame-graphs/d3-flame-graph.css">
+    <style>
+      body { margin: 0 }
+      #chart { margin: 10px 50px }
+      .d3-flame-graph rect {
+        stroke: #ececec;
+        fill-opacity: .8;
+      }
+      .d3-flame-graph rect:hover {
+        fill: #A5D;
+        stroke: #FFF;
+        stroke-width: 1;
+        cursor: pointer;
+      }
+      .d3-flame-graph .label {
+        color: #690000;
+        line-height: 1.8;
+      }
+      .d3-flame-graph .fade {
+        opacity: 0.4 !important;
+      }
+      #chart-label {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="chart"></div>
+      <div id="chart-label"></div>
+    </div>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="http://spiermar.github.io/d3-flame-graph/d3.flameGraph.js"></script>
+    <script src="tree-flame-data.js"></script>
+    <script src="tree-flame.js"></script>
+  </body>
+</html>

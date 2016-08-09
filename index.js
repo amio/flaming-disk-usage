@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const tree = require('directory-tree')
 const parseArgs = require('minimist')
+const opn = require('opn')
 
 const argv = parseArgs(process.argv.slice(2))
 const dir = argv._[0] || process.cwd()
@@ -19,10 +20,19 @@ const transformedTreeJSON = JSON.parse(JSON.stringify(treeJSON), function (k, v)
   }
 })
 
-treeJSON.name = transformedTreeJSON.name = path.resolve(dir)
+// treeJSON.name = transformedTreeJSON.name = path.resolve(dir)
 
 // console.log(treeJSON)
 // console.log(transformedTreeJSON)
+const treeFlameData = `
+  window.treedir = '${path.resolve(dir)}';
+  window.treedata = ${JSON.stringify(transformedTreeJSON)};
+`
+fs.writeFileSync(
+  path.join(__dirname, 'tree-flame-data.js'),
+  treeFlameData
+)
+// fs.writeFileSync('treedata-map.json', JSON.stringify(treeJSON, null, 2))
 
-fs.writeFileSync('treedata-map.json', JSON.stringify(treeJSON, null, 2))
-fs.writeFileSync('treedata-flame.json', JSON.stringify(transformedTreeJSON, null, 2))
+opn(path.join(__dirname, 'tree-flame.html'))
+process.exit()
