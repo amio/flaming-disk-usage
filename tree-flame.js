@@ -14,9 +14,7 @@ var tip = d3.tip()
   .offset([8, 0])
   .attr('class', 'd3-flame-graph-tip')
   .html(function(d) {
-    var sizeKB = Math.floor(d.value / 1024)
-    var size = sizeKB > 1024 ? Math.floor(sizeKB / 10.24) / 100 + 'MB' : sizeKB + 'KB'
-    return d.name + ": " + size;
+    return d.name + ": " + humanReadableBytes(d.value);
   });
 
 flameGraph.tooltip(tip);
@@ -31,3 +29,22 @@ function render () {
 }
 
 render();
+
+function humanReadableBytes (bytes) {
+  if (bytes < 1024) {
+    return bytes + 'B'
+  }
+
+  var sizeKB = Math.floor(bytes / 10.24) / 100
+  if (sizeKB < 1024) {
+    return sizeKB + 'KB'
+  }
+
+  var sizeMB = Math.floor(sizeKB / 10.24) / 100
+  if (sizeMB < 1024) {
+    return sizeMB + 'MB'
+  }
+
+  var sizeGB = Math.floor(sizeMB / 10.24) / 100
+  return sizeGB + 'GB'
+}

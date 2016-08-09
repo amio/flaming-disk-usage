@@ -16,7 +16,6 @@ const transformedTreeJSON = JSON.parse(treeJSONString, function (k, v) {
       return v
     case 'children':
       this.value = countSize(this)
-      console.log(this.path, this.value, this.size)
       return v
     default:
       return v
