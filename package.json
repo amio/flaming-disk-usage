@@ -1,6 +1,6 @@
 {
   "name": "flaming-disk-usage",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Disk usage in flame graph.",
   "repository": "amio/flaming-disk-usage",
   "bin": {
