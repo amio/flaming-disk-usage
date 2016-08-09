@@ -1,4 +1,4 @@
-# flaming-disk-usage [![npm version](https://img.shields.io/npm/v/flaming-disk-usage.svg?style=flat-square)](http://www.npmjs.com/package/flaming-disk-usage)
+# flaming-disk-usage [![npm-version][npm-badge]][npm-link]
 
 View disk usage with interactive flame graph.
 
@@ -19,3 +19,6 @@ fdu
 # view specified directory-tree
 fdu ~/git/a-repo
 ```
+
+[npm-badge]: https://img.shields.io/npm/v/flaming-disk-usage.svg?style=flat-square
+[npm-link]: http://www.npmjs.com/package/flaming-disk-usage

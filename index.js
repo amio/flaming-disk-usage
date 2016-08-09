@@ -1,14 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 const tree = require('directory-tree')
-const parseArgs = require('minimist')
 const opn = require('opn')
 
-const argv = parseArgs(process.argv.slice(2))
+const argv = require('minimist')(process.argv.slice(2))
 const dir = argv._[0] || process.cwd()
 
-const treeJSON = tree(dir)
-const transformedTreeJSON = JSON.parse(JSON.stringify(treeJSON), function (k, v) {
+const treeJSONString = JSON.stringify(tree(dir))
+const transformedTreeJSON = JSON.parse(treeJSONString, function (k, v) {
   switch (k) {
     case 'path':
       return v.replace(dir, '')
@@ -16,14 +15,24 @@ const transformedTreeJSON = JSON.parse(JSON.stringify(treeJSON), function (k, v)
       this.value = this.value || this.size
       return v
     case 'children':
-      this.value = this.children.reduce(function (prev, curr) {
-        return prev + curr.size
-      }, this.size)
+      this.value = countSize(this)
+      console.log(this.path, this.value, this.size)
       return v
     default:
       return v
   }
 })
+
+// Recursively count target's children's size.
+function countSize (target) {
+  if (target.children) {
+    return target.children.reduce((prev, curr) => {
+      return prev + countSize(curr)
+    }, 0)
+  } else {
+    return target.size
+  }
+}
 
 // Write to data js
 const treeFlameDataJS = `
@@ -36,5 +45,4 @@ fs.writeFileSync(
 )
 
 // Open flame graph html
-opn(path.join(__dirname, 'tree-flame.html'))
-process.exit()
+opn(path.join(__dirname, 'tree-flame.html'), { wait: false })
