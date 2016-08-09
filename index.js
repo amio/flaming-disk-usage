@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const tree = require('directory-tree')
+const tree = require('@amio/directory-tree')
 const opn = require('opn')
 
 const argv = require('minimist')(process.argv.slice(2))
