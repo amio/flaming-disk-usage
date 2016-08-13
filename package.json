@@ -1,5 +1,5 @@
 {
-  "name": "flaming-disk-usage",
+  "name": "fdu",
   "version": "1.0.2",
   "description": "Inspect disk usage with flame graph.",
   "repository": "amio/flaming-disk-usage",

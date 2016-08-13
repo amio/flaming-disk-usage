@@ -9,16 +9,16 @@ Inspect disk usage with flame graph.
 ### Install
 
 ```bash
-npm install -g flaming-disk-usage
+npm i -g fdu
 ```
 
 ### Usage
 
 ```bash
-# view current directory
+# will open a html showing current directory's disk usage
 fdu
 
-# view specified directory-tree
+# view specified directory
 fdu ~/git/a-repo
 ```
 
