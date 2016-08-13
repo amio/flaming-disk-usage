@@ -1,3 +1,38 @@
 #!/usr/bin/env node
 
-require('../index.js')
+const inspectDiskUsage = require('../index.js')
+const argv = require('minimist')(process.argv.slice(2), {
+  alias: {
+    'v': 'version',
+    'h': 'help'
+  }
+})
+
+const helpText = `
+  \x1b[1mFlaming Disk Usage\x1b[0m - Inspect disk usage with flame graph.
+
+  Usage
+
+    $ fdu [directory]
+
+  Examples
+
+    # Inspect current directory with flame graph
+    $ fdu
+
+    # Inspect a specified directory
+    $ fdu /tmp
+`
+
+if (argv.help) {
+  console.log(helpText)
+  process.exit(0)
+}
+
+if (argv.version) {
+  console.log('v' + require('../package.json').version)
+  process.exit(0)
+}
+
+const dir = argv._[0] || process.cwd()
+inspectDiskUsage(dir)
