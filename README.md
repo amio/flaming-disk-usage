@@ -22,5 +22,5 @@ fdu
 fdu ~/git/a-repo
 ```
 
-[npm-badge]: https://img.shields.io/npm/v/flaming-disk-usage.svg?style=flat-square
-[npm-link]: http://www.npmjs.com/package/flaming-disk-usage
+[npm-badge]: https://img.shields.io/npm/v/fdu.svg?style=flat-square
+[npm-link]: http://www.npmjs.com/package/fdu
