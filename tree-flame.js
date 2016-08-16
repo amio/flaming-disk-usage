@@ -22,12 +22,12 @@ flameGraph.tooltip(tip);
 function render () {
   d3.select("#chart")
     .html('')
-    .datum(window.treedata)
+    .datum(window.treejson)
     .call(flameGraph);
 
-  var totalSize = humanReadableBytes(window.treetotal)
+  var totalSize = humanReadableBytes(window.treejson.value)
   d3.select('#chart-label')
-    .text(window.treedir + ' - ' + totalSize)
+    .text(window.treejson.path + ' - ' + totalSize)
 }
 
 render();
