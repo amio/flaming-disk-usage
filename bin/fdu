@@ -35,4 +35,4 @@ if (argv.version) {
 }
 
 const dir = argv._[0] || process.cwd()
-inspectDiskUsage(dir)
+inspectDiskUsage(require('path').resolve(dir))
