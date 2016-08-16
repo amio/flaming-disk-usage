@@ -6,7 +6,7 @@
   "bin": {
     "fdu": "bin/fdu"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
