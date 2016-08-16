@@ -24,8 +24,10 @@ function render () {
     .html('')
     .datum(window.treedata)
     .call(flameGraph);
+
+  var totalSize = humanReadableBytes(window.treetotal)
   d3.select('#chart-label')
-    .html(window.treedir)
+    .text(window.treedir + ' - ' + totalSize)
 }
 
 render();
