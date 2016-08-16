@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const inspectDiskUsage = require('../index.js')
+const inspectDiskUsage = require('../lib/index.js')
 const argv = require('minimist')(process.argv.slice(2), {
   alias: {
     'v': 'version',

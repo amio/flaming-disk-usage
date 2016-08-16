@@ -6,14 +6,13 @@
   "bin": {
     "fdu": "bin/fdu"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
   "author": "Amio <amio.cn@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@amio/directory-tree": "^1.0.3",
     "minimist": "^1.2.0",
     "opn": "^4.0.2"
   }
