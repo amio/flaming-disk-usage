@@ -20,8 +20,7 @@ fdu
 fdu ~/git/a-repo
 ```
 
-![flaming-disk-usage](https://cloud.githubusercontent.com/assets/215282/17505149/d197d74c-5e31-11e6-926c-1a257407cb89.png)
-
+![flaming-disk-usage](https://cloud.githubusercontent.com/assets/215282/17702557/06328d2e-6401-11e6-99ae-a0a5f9297bdd.png)
 
 [npm-badge]: https://img.shields.io/npm/v/fdu.svg?style=flat-square
 [npm-link]: http://www.npmjs.com/package/fdu
