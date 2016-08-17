@@ -16,7 +16,7 @@ npm i -g fdu
 # will open a html showing current directory's disk usage
 fdu
 
-# view specified directory
+# view specific directory
 fdu ~/git/a-repo
 ```
 
