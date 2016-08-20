@@ -3,7 +3,7 @@ window.onload = render
 window.onresize = render
 
 function render () {
-  var datasource = window.dataJson
+  var datasource = window.dataJSON
   var margin = 50
   var graph = configGraph()
     .height(560)
