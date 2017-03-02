@@ -1,5 +1,7 @@
 # flaming-disk-usage [![npm-version][npm-badge]][npm-link]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/amio/flaming-disk-usage.svg)](https://greenkeeper.io/)
+
 Inspect disk usage with flame graph.
 
 > After seeing Jordan Scales's article([I Peeked Into My Node_Modules Directory And You Won’t Believe What Happened Next](https://medium.com/friendship-dot-js/b89f63d21558)), I am surprised that so many people releasing package to npm so casually. I knew such a possibility but never thought it's so common. So I made this tool for catching these useless files wasting my precious SSD.
